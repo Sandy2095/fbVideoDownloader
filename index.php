@@ -6,13 +6,9 @@ $fb = new Facebook\Facebook([
   'app_secret' => '04d65bc8dd4ddb3aada0e4e08f964578',
   'default_graph_version' => 'v2.9',
 ]);
-
-$redirect = "https://sandy2095.github.io/";
    $permissions = []; // optional
    $helper = $fb->getRedirectLoginHelper();
    $accessToken = $helper->getAccessToken();
-
-   
 if (isset($accessToken)) {
 	
  		$url = "https://graph.facebook.com/v2.9/1068194383324949?fields=source&access_token={$accessToken}";
@@ -38,6 +34,6 @@ if (isset($accessToken)) {
 		
 } 
 else {
-	$loginUrl = $helper->getLoginUrl('https://sandy2095.github.io/', $permissions);
+	$loginUrl = $helper->getLoginUrl('https://fbvideodownloader.herokuapp.com/', $permissions);
 	echo '<a href="' . $loginUrl . '">Login with Facebook</a>';
 }
