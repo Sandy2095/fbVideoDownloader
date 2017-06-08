@@ -1,4 +1,28 @@
+<html lang="en">
+<head>
+<title>FB Video Downloader Online</title>
+<meta name="description" content="Facebook Video Downloader Online, Download Facebook Videos and Save them directly from facebook to your computer or mobile for Free without Java or Software. We provide also a Video Downloader Chrome Extension. Facebook Video Indir Online.">
+<meta name="keywords" content="facebook video downloader,download facebook videos,facebook online downloader, grab facebook online, free facebook video downloader,baixar vídeos do Facebook,baixar facebook,video downloader extension chrome">
+
+		
+</head>
+<body>
+<form name="fbvideodownloader" action="index.php" method="post">
+<input id="url" name="url" placeholder="Please Enter Facebook Video URL.." type="url">
+<input id="submit" name="submit" type="submit">
 <?php 
+$url_global ="";
+if(isset($_POST['submit']))
+{
+	if(empty($_POST['url']))
+	{
+	echo "URL is Required";
+	}
+	 $url_global=$_POST['url'];
+  } 
+//echo $url_global[5];
+$url_global = explode('/',$url_global);
+
 session_start();
 require_once __DIR__ . '/Facebook/autoload.php';
 $fb = new Facebook\Facebook([
@@ -9,9 +33,11 @@ $fb = new Facebook\Facebook([
    $permissions = []; // optional
    $helper = $fb->getRedirectLoginHelper();
    $accessToken = $helper->getAccessToken();
+
+
 if (isset($accessToken)) {
 	
- 		$url = "https://graph.facebook.com/v2.9/1068194383324949?fields=source&access_token={$accessToken}";
+ 		$url = "https://graph.facebook.com/v2.9/{$url_global[5]}?fields=source&access_token={$accessToken}";
 		$headers = array("Content-type: application/json");
 		
 	 
@@ -34,6 +60,11 @@ if (isset($accessToken)) {
 		
 } 
 else {
-	$loginUrl = $helper->getLoginUrl('https://fbvideodownloader.herokuapp.com/', $permissions);
-	echo '<a href="' . $loginUrl . '">Login with Facebook</a>';
+	$loginUrl = $helper->getLoginUrl('https://fbvideodownloader.herokuapp.com', $permissions);
+	echo '<a class=button href="'. $loginUrl .'">Download</a></div>';
+	 
 }
+?>
+</form>
+</body>
+</html>
