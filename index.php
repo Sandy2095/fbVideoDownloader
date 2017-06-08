@@ -9,7 +9,9 @@
 <body>
 <form name="fbvideodownloader" action="index.php" method="post">
 <input id="url" name="url" placeholder="Please Enter Facebook Video URL.." type="url">
-<input id="submit" name="submit" type="submit">
+
+
+
 <?php 
 $url_global ="";
 if(isset($_POST['submit']))
@@ -60,8 +62,9 @@ if (isset($accessToken)) {
 		
 } 
 else {
-	$loginUrl = $helper->getLoginUrl('https://fbvideodownloader.herokuapp.com', $permissions);
-	echo '<a class=button href="'. $loginUrl .'">Download</a></div>';
+	#$loginUrl = $helper->getLoginUrl('https://fbvideodownloader.herokuapp.com', $permissions);
+	#$loginUrl = $helper->getLoginUrl('https://sandy2095.github.io/', $permissions);
+	echo '<a class=button href="'. $loginUrl .'"><input id="submit" name="submit" type="submit"></a></div>';
 	 
 }
 ?>
