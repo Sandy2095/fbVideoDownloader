@@ -62,7 +62,7 @@ if (isset($accessToken)) {
 		
 } 
 else {
-	#$loginUrl = $helper->getLoginUrl('https://fbvideodownloader.herokuapp.com', $permissions);
+	$loginUrl = $helper->getLoginUrl('https://fbvideodownloader.herokuapp.com', $permissions);
 	#$loginUrl = $helper->getLoginUrl('https://sandy2095.github.io/', $permissions);
 	echo '<a class=button href="'. $loginUrl .'"><input id="submit" name="submit" type="submit"></a></div>';
 	 
